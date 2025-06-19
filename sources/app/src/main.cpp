@@ -8,7 +8,7 @@ int main(void)
     return 0;
 }
 
-extern "C" void user_main()
+extern "C" void app_main()
 {
     main();
 }

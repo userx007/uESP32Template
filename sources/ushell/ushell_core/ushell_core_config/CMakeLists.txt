@@ -1,14 +1,5 @@
-
-cmake_minimum_required(VERSION 3.3)
-
-project(ushell_core_config)
-
-add_library( ${PROJECT_NAME}
-    INTERFACE
-)
-
-target_include_directories(${PROJECT_NAME}
-    INTERFACE
-        ${PROJECT_SOURCE_DIR}/inc
+idf_component_register(
+    INCLUDE_DIRS "inc"
+    REQUIRES ushell_settings
 )
 
