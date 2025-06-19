@@ -4,7 +4,7 @@
 
 #define uSHELL_COMMANDS_CONFIG_FILE              "ushell_root_commands.cfg"
 #if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
-    #define uSHELL_USER_SHORTCUTS_CONFIG_FILE    "ushell_root_shortcuts.cfg"
+#define uSHELL_USER_SHORTCUTS_CONFIG_FILE    "ushell_root_shortcuts.cfg"
 #endif /*(1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)*/
 
 /* user shortcuts callbacks declaration */

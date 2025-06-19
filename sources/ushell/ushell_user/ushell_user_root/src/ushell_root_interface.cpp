@@ -11,6 +11,13 @@ static int uShellExecuteCommand( const command_s *psCmd );
     #pragma GCC diagnostic ignored "-Wmissing-braces"
 #endif /*defined (__GNUC__) && defined(__AVR__)*/
 
+#if (defined(__GNUC__) && defined(__xtensa__))
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcast-function-type"
+#endif /*(defined(__GNUC__) && defined(__xtensa__))*/
+
+
+
 /** \brief define array of functions (basic properties) */
 #define  uSHELL_COMMANDS_TABLE_BEGIN        static const fctDef_s g_vsFuncDefArray[] = {
 #define  uSHELL_COMMAND_PARAMS_PATTERN(t)
@@ -25,7 +32,7 @@ static int uShellExecuteCommand( const command_s *psCmd );
 /** \brief define array of functions (extended properties) */
 #define  uSHELL_COMMANDS_TABLE_BEGIN        static const fctDefEx_s g_vsFuncDefExArray[] = {
 #define  uSHELL_COMMAND_PARAMS_PATTERN(t)
-#if (defined(__GNUC__) && (defined(__AVR__) || defined(__ARM_ARCH) || defined(__xtensa__)))
+#if (defined(__GNUC__) && (defined(__AVR__) || defined(__ARM_ARCH)))
     #define  uSHELL_COMMAND(a,b,c)          { (v_fctptr_t)a, b##_type },
 #elif ((defined(__GNUC__) && defined(__linux__)) || defined(__MINGW32__))
     #ifdef __cplusplus
@@ -41,6 +48,8 @@ static int uShellExecuteCommand( const command_s *psCmd );
     #endif
 #elif (defined(__ghs) || defined(__ghs__))   /* Green Hills Software compiler */
     #define  uSHELL_COMMAND(a,b,c)          { a, b##_type },
+#elif (defined(__GNUC__) && defined(__xtensa__))
+    #define  uSHELL_COMMAND(a,b,c)          { (v_fctptr_t)a, b##_type },
 #else
     #error "Build variant not defined, please define it..."
 #endif
@@ -52,7 +61,7 @@ static int uShellExecuteCommand( const command_s *psCmd );
 #undef   uSHELL_COMMANDS_TABLE_END
 
 /* end of disable warnings */
-#if (defined (__GNUC__) && defined(__AVR__))
+#if (defined (__GNUC__) && (defined(__AVR__) || defined(__xtensa__)))
     #pragma GCC diagnostic pop
 #endif /*defined (__GNUC__) && defined(__AVR__)*/
 
