@@ -21,8 +21,10 @@ set(CMAKE_GDB ${TOOLCHAIN_PREFIX}-gdb)
 
 # Flags
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib -Wl,-T${CMAKE_SOURCE_DIR}/linker/linker.ld" CACHE STRING "Linker flags")
-set(CMAKE_EXE_LINKER_FLAGS_DEBUG   "-Wl,-Map=output_debug.map")
-set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-Wl,-Map=output_release.map")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map=link.map -Wl,--cref -Wl,--print-memory-usage")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-inline -mlongcalls -g0")
+
+
 
 # Don't look for standard system libraries
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

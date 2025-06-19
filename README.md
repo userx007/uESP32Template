@@ -63,7 +63,7 @@ Or for one-time use:
     #define UART_RXD_READY (*(volatile uint32_t *)0x3FF4001C)
     #define UART_RX_FIFO   (*(volatile uint32_t *)0x3FF40078)
 
-    char uart_getchar() {
+    int uart_getchar() {
         // Wait until RX FIFO has data
         while (!(UART_RXD_READY & (1 << 0))) { }
         return UART_RX_FIFO & 0xFF;
