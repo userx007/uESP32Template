@@ -14,7 +14,7 @@
 #define uSHELL_IMPLEMENTS_EDITMODE               1
 #define uSHELL_IMPLEMENTS_SMART_PROMPT           1
 #define uSHELL_IMPLEMENTS_COMMAND_HELP           1
-#define uSHELL_IMPLEMENTS_USER_SHORTCUTS         1
+#define uSHELL_IMPLEMENTS_USER_SHORTCUTS         0
 
 /* minor features */
 #define uSHELL_IMPLEMENTS_SHELL_EXIT             1

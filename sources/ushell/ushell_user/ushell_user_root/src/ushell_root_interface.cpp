@@ -77,7 +77,7 @@ static int g_viAutocompleteIndexArray[uSHELL_NR_ELEMS(g_vsFuncDefArray)] = {0};
 /* user shortcuts callbacks declaration */
 #if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
     #define  uSHELL_USER_SHORTCUTS_TABLE_BEGIN
-    #define  uSHELL_USER_SHORTCUT(a,b,c)             extern void uShellUserHandleShortcut_##b( const char *pstrArgs );
+    #define  uSHELL_USER_SHORTCUT(a,b,c)             extern "C" void uShellUserHandleShortcut_##b( const char *pstrArgs );
     #define  uSHELL_USER_SHORTCUTS_TABLE_END
     #include uSHELL_USER_SHORTCUTS_CONFIG_FILE
     #undef   uSHELL_USER_SHORTCUTS_TABLE_BEGIN
@@ -87,9 +87,9 @@ static int g_viAutocompleteIndexArray[uSHELL_NR_ELEMS(g_vsFuncDefArray)] = {0};
 
 /* user shortcuts array */
 #if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
-#define  uSHELL_USER_SHORTCUTS_TABLE_BEGIN       static shortcut_s g_vsShortcutsArray[] = { { ' ', nullptr }
+#define  uSHELL_USER_SHORTCUTS_TABLE_BEGIN          static shortcut_s g_vsShortcutsArray[] = { { ' ', nullptr }
 #define  uSHELL_USER_SHORTCUT(a,b,c)                   ,{ a, uShellUserHandleShortcut_##b }
-#define  uSHELL_USER_SHORTCUTS_TABLE_END          };
+#define  uSHELL_USER_SHORTCUTS_TABLE_END            };
 #include uSHELL_USER_SHORTCUTS_CONFIG_FILE
 #undef   uSHELL_USER_SHORTCUTS_TABLE_BEGIN
 #undef   uSHELL_USER_SHORTCUT
