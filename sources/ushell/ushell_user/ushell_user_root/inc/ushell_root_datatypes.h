@@ -7,6 +7,17 @@
     #define uSHELL_USER_SHORTCUTS_CONFIG_FILE    "ushell_root_shortcuts.cfg"
 #endif /*(1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)*/
 
+/* user shortcuts callbacks declaration */
+#if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
+#define  uSHELL_USER_SHORTCUTS_TABLE_BEGIN
+#define  uSHELL_USER_SHORTCUT(a,b,c)             void uShellUserHandleShortcut_##b( const char *pstrArgs );
+#define  uSHELL_USER_SHORTCUTS_TABLE_END
+#include uSHELL_USER_SHORTCUTS_CONFIG_FILE
+#undef   uSHELL_USER_SHORTCUTS_TABLE_BEGIN
+#undef   uSHELL_USER_SHORTCUT
+#undef   uSHELL_USER_SHORTCUTS_TABLE_END
+#endif /*(1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)*/
+
 /* shell generated types and structures */
 #define  uSHELL_COMMANDS_TABLE_BEGIN
 #define  uSHELL_COMMAND_PARAMS_PATTERN(t)

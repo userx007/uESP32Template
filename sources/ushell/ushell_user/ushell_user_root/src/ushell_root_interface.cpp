@@ -60,8 +60,8 @@ static int uShellExecuteCommand( const command_s *psCmd );
 #if (1 == uSHELL_IMPLEMENTS_COMMAND_HELP)
     #define  uSHELL_COMMANDS_TABLE_BEGIN             static const char* const g_vstrInfoArray[] = {
     #define  uSHELL_COMMAND_PARAMS_PATTERN(t)
-    #define  uSHELL_COMMAND(a,b,c)                  c,
-    #define  uSHELL_COMMANDS_TABLE_END          };
+    #define  uSHELL_COMMAND(a,b,c)                      c,
+    #define  uSHELL_COMMANDS_TABLE_END               };
     #include uSHELL_COMMANDS_CONFIG_FILE
     #undef   uSHELL_COMMANDS_TABLE_BEGIN
     #undef   uSHELL_COMMAND_PARAMS_PATTERN
@@ -73,17 +73,6 @@ static int uShellExecuteCommand( const command_s *psCmd );
 #if (1 == uSHELL_IMPLEMENTS_AUTOCOMPLETE)
 static int g_viAutocompleteIndexArray[uSHELL_NR_ELEMS(g_vsFuncDefArray)] = {0};
 #endif /*(1 == uSHELL_IMPLEMENTS_AUTOCOMPLETE)*/
-
-/* user shortcuts callbacks declaration */
-#if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
-    #define  uSHELL_USER_SHORTCUTS_TABLE_BEGIN
-    #define  uSHELL_USER_SHORTCUT(a,b,c)             extern "C" void uShellUserHandleShortcut_##b( const char *pstrArgs );
-    #define  uSHELL_USER_SHORTCUTS_TABLE_END
-    #include uSHELL_USER_SHORTCUTS_CONFIG_FILE
-    #undef   uSHELL_USER_SHORTCUTS_TABLE_BEGIN
-    #undef   uSHELL_USER_SHORTCUT
-    #undef   uSHELL_USER_SHORTCUTS_TABLE_END
-#endif /*(1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)*/
 
 /* user shortcuts array */
 #if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)

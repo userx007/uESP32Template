@@ -1,5 +1,5 @@
-//#include "ushell_core.h"
 #include "ushell_core_printout.h"
+#include "ushell_core_settings.h"
 
 
 ///////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ int vtest ( void )
 
 #if (1 == uSHELL_IMPLEMENTS_USER_SHORTCUTS)
 
-extern "C" void uShellUserHandleShortcut_Dot( const char *pstrArgs )
+void uShellUserHandleShortcut_Dot( const char *pstrArgs )
 {
     uSHELL_PRINTF("[.] registered but not implemented | args[%s] ", pstrArgs);
 
@@ -31,7 +31,7 @@ extern "C" void uShellUserHandleShortcut_Dot( const char *pstrArgs )
 
 
 /******************************************************************************/
-extern "C" void uShellUserHandleShortcut_Slash( const char *pstrArgs )
+void uShellUserHandleShortcut_Slash( const char *pstrArgs )
 {
     uSHELL_PRINTF("[/] registered but not implemented | args[%s] ", pstrArgs);
 
