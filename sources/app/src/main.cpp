@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    //uart_setup();
+    uart_setup();
     Microshell::getShellPtr(pluginEntry(), "root")->Run();
     return 0;
 }

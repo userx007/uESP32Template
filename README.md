@@ -147,3 +147,34 @@ Or for one-time use:
 
     https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/linker-script-generation.html
 
+To connect **UART1** on your ESP32-S2 Mini to a PC using an **FTDI USB-to-Serial adapter**, you’ll just need a few wires and the right pin mapping. Here's how to do it:
+
+---
+
+### 🔌 Wiring UART1 to FTDI
+
+Assuming you're using **GPIO17 (TX1)** and **GPIO21 (RX1)** for UART1:
+
+| ESP32-S2 Mini | FTDI Adapter |
+|---------------|--------------|
+| GPIO17 (TX1)  | RX           |
+| GPIO21 (RX1)  | TX           |
+| GND           | GND          |
+| (Optional) 3.3V | VCC (if powering from FTDI) |
+
+> ⚠️ Make sure your FTDI adapter is set to **3.3V logic level**, not 5V — ESP32-S2 is not 5V tolerant.
+
+---
+
+### 🧠 Notes
+
+- **Cross the TX/RX lines**: ESP TX → FTDI RX, and ESP RX → FTDI TX.
+- If you're using UART1 for logging or communication, make sure it's initialized in your firmware (via `uart_driver_install()` or your own low-level setup).
+- You don’t need to configure anything in `menuconfig` unless you're routing the **console output** to UART1.
+
+---
+
+### 🧪 Bonus Tip
+
+If you're using this for flashing, note that **UART0** is typically used for that — and its pins (GPIO43/44) may not be broken out on your board. So UART1 is great for **runtime communication**, but not for flashing unless you’ve customized your bootloader.
+
