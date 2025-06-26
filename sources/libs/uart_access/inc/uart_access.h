@@ -10,7 +10,7 @@ extern "C" {
 void uart_setup(void);
 int  uart_getchar(void);
 void uart_putchar(char c);
-void uart_printf (const char *format, ...);
+int  uart_printf (const char *format, ...);
 int  uart_snprintf(char *buf, int maxlen, const char *fmt, ...);
 
 #ifdef __cplusplus
